@@ -1,0 +1,661 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Balla Raniya | Ingénieur Génie Électromécanique - CV PDF avec QR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #dce9f2 0%, #c2d6e4 100%);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            padding: 30px 20px;
+            color: #11212e;
+        }
+
+        .cv-card {
+            max-width: 1280px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 25px 40px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        .cv-grid {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        /* SIDEBAR GAUCHE */
+        .sidebar-left {
+            flex: 1.05;
+            background: #1e2f3c;
+            color: #eef3fc;
+            padding: 1rem 1rem;
+        }
+
+        .main-right {
+            flex: 2.2;
+            background: white;
+            padding: 1.2rem 1.5rem;
+        }
+
+        .photo-frame {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 8px;
+        }
+        .photo-frame img {
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ffb347;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            width: 100px;
+            height: 100px;
+            background: #eef3fc;
+        }
+
+        .sidebar-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin: 10px 0 5px 0;
+            border-left: 3px solid #ffb347;
+            padding-left: 8px;
+            text-transform: uppercase;
+            color: #ffdcb0;
+        }
+        .first-sidebar-title {
+            margin-top: 0;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 5px;
+            font-size: 0.72rem;
+            word-break: break-word;
+        }
+        .contact-item i {
+            width: 20px;
+            font-size: 0.8rem;
+            color: #ffb347;
+        }
+        .contact-item a {
+            color: #f0f9ff;
+            text-decoration: none;
+            border-bottom: 1px dotted #6b8da8;
+        }
+
+        .skill-badge {
+            display: inline-block;
+            background: #2c485b;
+            padding: 2px 6px;
+            border-radius: 25px;
+            font-size: 0.65rem;
+            font-weight: 500;
+            margin: 0 3px 4px 0;
+            color: #f5f9ff;
+        }
+        .skill-category {
+            margin-bottom: 4px;
+        }
+        .skill-category strong {
+            display: block;
+            font-size: 0.68rem;
+            color: #ffcd94;
+            margin: 3px 0 2px 0;
+            text-transform: uppercase;
+        }
+        .lang-line {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed #415f71;
+            padding: 3px 0;
+            font-size: 0.72rem;
+        }
+        .interest-tag {
+            background: #2c485b;
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 25px;
+            font-size: 0.68rem;
+            margin: 0 4px 4px 0;
+        }
+
+        /* RIGHT COLUMN */
+        .name-head {
+            margin-bottom: 6px;
+            border-bottom: 2px solid #ffb347;
+            display: inline-block;
+            padding-bottom: 3px;
+        }
+        .name-head h1 {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: #0f2b36;
+        }
+        .badge-title {
+            background: #ffb34720;
+            display: inline-block;
+            padding: 3px 14px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 0.75rem;
+            color: #c25b00;
+            margin: 5px 0 10px 0;
+        }
+        .profil-text {
+            background: #f9fafc;
+            padding: 8px 14px;
+            border-radius: 20px;
+            margin: 6px 0 12px 0;
+            font-size: 0.78rem;
+            line-height: 1.3;
+            color: #2c4253;
+            border-left: 4px solid #ffb347;
+        }
+
+        .section-main {
+            margin: 12px 0 8px 0;
+        }
+        .section-main-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #1e3f4f;
+            margin-bottom: 6px;
+        }
+        .section-main-header i {
+            font-size: 1.1rem;
+            color: #ffb347;
+        }
+
+        .exp-item {
+            margin-bottom: 8px;
+            padding-left: 6px;
+            border-left: 2px solid #e2e8f0;
+        }
+        .exp-title-line {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 2px;
+        }
+        .exp-title {
+            font-weight: 800;
+            font-size: 0.82rem;
+            color: #0b3b4b;
+        }
+        .exp-date {
+            font-size: 0.65rem;
+            background: #eef3f9;
+            padding: 1px 6px;
+            border-radius: 30px;
+            color: #2c627c;
+            font-weight: 600;
+        }
+        .exp-sub {
+            font-weight: 600;
+            color: #ff8c42;
+            font-size: 0.72rem;
+            margin: 2px 0 3px 0;
+        }
+        .task-list {
+            list-style: none;
+            margin-top: 2px;
+        }
+        .task-list li {
+            font-size: 0.72rem;
+            margin-bottom: 2px;
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+        .task-list li i {
+            color: #ffb347;
+            font-size: 0.6rem;
+            width: 12px;
+            margin-top: 2px;
+        }
+
+        .edu-item {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            background: #fefaf5;
+            padding: 5px 12px;
+            border-radius: 14px;
+            margin-bottom: 6px;
+            font-size: 0.75rem;
+        }
+        .edu-year {
+            font-weight: 800;
+            color: #ff8c42;
+            min-width: 85px;
+            font-size: 0.75rem;
+        }
+        .edu-desc {
+            font-weight: 600;
+        }
+        .project-item {
+            background: #fafcff;
+            padding: 4px 10px;
+            border-radius: 14px;
+            margin-bottom: 5px;
+            border-left: 3px solid #ffb347;
+        }
+        .project-title {
+            font-weight: 800;
+            font-size: 0.75rem;
+            color: #1a4c5e;
+            margin-bottom: 1px;
+        }
+        .project-details {
+            font-size: 0.7rem;
+            color: #2c5a6e;
+            padding-left: 4px;
+        }
+        .software-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 4px;
+        }
+        .software-item {
+            background: #eef2f5;
+            color: #1e3f4f;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 0.68rem;
+            font-weight: 500;
+        }
+        hr {
+            margin: 5px 0;
+        }
+        footer {
+            background: #fef5ea;
+            text-align: center;
+            padding: 5px;
+            font-size: 0.65rem;
+            color: #527a92;
+            border-top: 1px solid #ffe1bd;
+        }
+
+        .qr-print-container {
+            display: none;
+        }
+        .print-controls {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 1000;
+        }
+        .btn-pdf {
+            background: #1e2f3c;
+            border: none;
+            color: white;
+            font-weight: 700;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+        }
+        .btn-pdf i {
+            color: #ffb347;
+            font-size: 1.1rem;
+        }
+        .btn-pdf:hover {
+            background: #2c485b;
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 880px) {
+            body { padding: 16px 12px; }
+            .sidebar-left, .main-right { flex: auto; width: 100%; }
+            .sidebar-left { order: 1; }
+            .main-right { order: 2; }
+            .print-controls { bottom: 16px; right: 16px; }
+            .btn-pdf { padding: 8px 16px; font-size: 0.75rem; }
+        }
+
+        /* ========== IMPRESSION A4 - UNE SEULE PAGE : photo plus grande d'un cran ========== */
+        @page {
+            size: A4;
+            margin: 0.06in;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+                margin: 0;
+            }
+            .print-controls {
+                display: none;
+            }
+            .cv-card {
+                max-width: 100%;
+                margin: 0;
+                border-radius: 0;
+                box-shadow: none;
+            }
+            .cv-grid {
+                display: flex;
+                flex-wrap: nowrap;
+                width: 100%;
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+            .sidebar-left {
+                flex: 0 0 32% !important;
+                width: 32% !important;
+                background: #1e2f3c;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                padding: 0.08rem 0.3rem !important;
+            }
+            .main-right {
+                flex: 0 0 68% !important;
+                width: 68% !important;
+                padding: 0.08rem 0.4rem !important;
+            }
+            
+            /* PHOTO PLUS GRANDE : agrandissement d'un cran (70px -> 78px) */
+            .photo-frame img { width: 78px; height: 78px; border-width: 2px; }
+            .photo-frame { margin-bottom: 2px; }
+            
+            /* Reste des polices très légèrement ajustées pour compenser et tenir sur 1 page */
+            .sidebar-title { font-size: 0.57rem; margin: 3px 0 2px; padding-left: 4px; }
+            .contact-item { font-size: 0.5rem; margin-bottom: 2px; gap: 3px; }
+            .contact-item i { width: 13px; font-size: 0.51rem; }
+            .skill-badge { font-size: 0.47rem; padding: 1px 3px; margin: 0 1px 2px 0; }
+            .skill-category strong { font-size: 0.52rem; margin: 2px 0 1px; }
+            .lang-line { font-size: 0.5rem; padding: 2px 0; }
+            .interest-tag { font-size: 0.47rem; padding: 1px 4px; margin: 0 2px 2px 0; }
+            
+            .name-head h1 { font-size: 1.15rem; }
+            .badge-title { font-size: 0.52rem; padding: 2px 7px; margin: 2px 0 4px; }
+            .profil-text { font-size: 0.54rem; padding: 3px 7px; margin: 3px 0 5px; line-height: 1.2; }
+            
+            .section-main { margin: 3px 0 2px; }
+            .section-main-header { font-size: 0.71rem; margin-bottom: 2px; gap: 3px; }
+            .section-main-header i { font-size: 0.71rem; }
+            
+            .exp-item { margin-bottom: 2px; padding-left: 3px; }
+            .exp-title { font-size: 0.59rem; }
+            .exp-date { font-size: 0.47rem; padding: 1px 3px; }
+            .exp-sub { font-size: 0.52rem; margin: 1px 0 1px; }
+            .task-list li { font-size: 0.52rem; margin-bottom: 1px; gap: 3px; }
+            .task-list li i { font-size: 0.41rem; width: 8px; }
+            
+            .edu-item { padding: 2px 7px; margin-bottom: 2px; font-size: 0.54rem; gap: 4px; }
+            .edu-year { min-width: 60px; font-size: 0.54rem; }
+            .edu-desc { font-size: 0.54rem; }
+            .edu-item span { font-size: 0.54rem; }
+            
+            .project-item { padding: 2px 5px; margin-bottom: 2px; }
+            .project-title { font-size: 0.55rem; }
+            .project-details { font-size: 0.5rem; }
+            
+            .software-item { font-size: 0.5rem; padding: 1px 4px; }
+            
+            footer { font-size: 0.45rem; padding: 2px; }
+            hr { margin: 2px 0; }
+            
+            .qr-print-container {
+                display: flex !important;
+                justify-content: flex-start;
+                margin-top: 2px;
+                padding-top: 2px;
+                border-top: 1px solid #ffb34760;
+            }
+            .qr-box canvas, .qr-box img { width: 38px !important; height: 38px !important; }
+            .qr-text { font-size: 0.4rem; max-width: 80px; }
+            
+            .cv-card, .cv-grid, .sidebar-left, .main-right {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="cv-card" id="cvContainer">
+    <div class="cv-grid">
+        <!-- SIDEBAR GAUCHE : toutes les informations conservées -->
+        <div class="sidebar-left">
+            <div class="photo-frame">
+                <img src= 'RANIYA.PNG' 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22 viewBox=%220 0 100 100%22%3E%3Ccircle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%23344e5c%22/%3E%3Ctext x=%2250%22 y=%2270%22 font-size=%2242%22 text-anchor=%22middle%22 fill=%22%23ffb347%22%3E👩%3C/text%3E%3C/svg%3E' alt="Balla Raniya">
+            </div>
+            <div class="sidebar-title first-sidebar-title">CONTACT</div>
+            <div class="contact-item"><i class="fas fa-mobile-alt"></i> <span>+212 6 44 98 76 38</span></div>
+            <div class="contact-item"><i class="fas fa-envelope"></i> <a href="mailto:raniayaballa@gmail.com">raniayaballa@gmail.com</a></div>
+            <div class="contact-item"><i class="fas fa-map-marker-alt"></i> <span>Meknès, Maroc</span></div>
+
+            <div class="sidebar-title">COMPÉTENCES</div>
+            <div class="skill-category"><strong>Électriques</strong></div>
+            <div><span class="skill-badge">Dim. BT/HT</span><span class="skill-badge">Protection BT</span><span class="skill-badge">Sélectivité</span><span class="skill-badge">Réseaux</span><span class="skill-badge">Smart Grids</span><span class="skill-badge">Moteurs hybrides</span></div>
+            <div class="skill-category"><strong>Énergétiques</strong></div>
+            <div><span class="skill-badge">Audit énergétique</span><span class="skill-badge">Solaire/Éolien</span></div>
+            <div class="skill-category"><strong>Électronique & Auto.</strong></div>
+            <div><span class="skill-badge">Commande/Automat.</span><span class="skill-badge">Syst. embarqués</span><span class="skill-badge">Supervision</span></div>
+            <div class="skill-category"><strong>Logiciels</strong></div>
+            <div><span class="skill-badge">ETAP</span><span class="skill-badge">Caneco BT</span><span class="skill-badge">Ecodial</span><span class="skill-badge">AutoCAD</span><span class="skill-badge">MATLAB/Simulink</span><span class="skill-badge">CATIA</span><span class="skill-badge">ANSYS</span><span class="skill-badge">SolidWorks</span><span class="skill-badge">WinCC</span><span class="skill-badge">MySQL</span><span class="skill-badge">Proteus</span></div>
+            <div class="skill-category"><strong>Bureautique</strong></div>
+            <div><span class="skill-badge">Word</span><span class="skill-badge">Excel</span><span class="skill-badge">PowerPoint</span></div>
+
+            <div class="sidebar-title">HUMANES</div>
+            <div><span class="skill-badge">Communication</span><span class="skill-badge">Travail équipe</span><span class="skill-badge">Leadership</span><span class="skill-badge">Flexibilité</span><span class="skill-badge">Gestion stress</span></div>
+
+            <div class="sidebar-title">LANGUES</div>
+            <div class="lang-line"><span>Arabe</span> <span>Maternelle</span></div>
+            <div class="lang-line"><span>Français</span> <span>Courant</span></div>
+            <div class="lang-line"><span>Anglais</span> <span>Intermédiaire sup.</span></div>
+
+            <div class="sidebar-title">CERTIFS</div>
+            <div><span class="skill-badge">Formation MATLAB</span><span class="skill-badge">Bootcamp Arduino</span></div>
+
+            <div class="sidebar-title">INTÉRÊTS</div>
+            <div><span class="interest-tag">Culture</span><span class="interest-tag">Voyages</span><span class="interest-tag">Cinéma</span><span class="interest-tag">Recherche Web</span></div>
+
+            <div class="sidebar-title">PARASCOLAIRE</div>
+            <div><span class="interest-tag">Club Social & Caravanes</span></div>
+            <div><span class="interest-tag">Cellule projets Club Industriel</span></div>
+
+            <!-- QR code destiné à l'impression -->
+            <div class="qr-print-container" id="qrPrintZone"></div>
+        </div>
+
+        <!-- PARTIE DROITE : formation, expériences, projets, logiciels - toutes les informations conservées -->
+        <div class="main-right">
+            <div class="name-head">
+                <h1>BALLA RANIYA</h1>
+            </div>
+            <div class="badge-title">INGÉNIEUR D'ÉTAT ARTS & MÉTIERS · GÉNIE ÉLECTROMÉCANIQUE</div>
+            
+            <div class="profil-text">
+                <i class="fas fa-quote-left" style="color: #ffb347; margin-right: 4px;"></i> 
+                Ingénieure spécialisée en Énergie et Maintenance électromécanique, avec une double compétence en diagnostic avancé, supervision industrielle et optimisation des systèmes. Rigoureuse, orientée résultats et dotée d'une forte capacité d'analyse pour améliorer la fiabilité et les performances des installations.
+            </div>
+
+            <!-- FORMATION -->
+            <div class="section-main">
+                <div class="section-main-header"><i class="fas fa-graduation-cap"></i> <span>FORMATION</span></div>
+                <div class="edu-item"><div class="edu-year">2023 – 2026</div><div><span class="edu-desc">Cycle d'ingénieur d'État en Génie Électromécanique</span><br>École Nationale Supérieure des Arts et Métiers (ENSAM) · Meknès<br><span style="font-size:0.65rem;">Option Énergie et Maintenance électromécanique</span></div></div>
+                <div class="edu-item"><div class="edu-year">2021 – 2023</div><div><span class="edu-desc">DEUST Mathématiques-Physique-Informatique – Mention Très Bien</span><br>Faculté des Sciences et Techniques (FST) · Fès</div></div>
+                <div class="edu-item"><div class="edu-year">Juin 2021</div><div><span class="edu-desc">Baccalauréat Sciences Mathématiques A – Mention Bien</span><br>Lycée El Mansour Dahbi · Taounate</div></div>
+            </div>
+
+            <!-- EXPÉRIENCES PROFESSIONNELLES -->
+            <div class="section-main">
+                <div class="section-main-header"><i class="fas fa-briefcase"></i> <span>EXPÉRIENCES PROFESSIONNELLES</span></div>
+
+                <div class="exp-item">
+                    <div class="exp-title-line"><span class="exp-title">Stage de fin d'études (PFE) – Diagnostic & fiabilité</span><span class="exp-date">Fév – Juillet 2026</span></div>
+                    <div class="exp-sub">SMMRGV-SIANA · Tanger</div>
+                    <ul class="task-list">
+                        <li><i class="fas fa-chevron-right"></i> Analyse des causes racines des défaillances du système de climatisation (RCA, AMDEC).</li>
+                        <li><i class="fas fa-chevron-right"></i> Élaboration de solutions techniques et mise en œuvre de plans d’actions correctifs/préventifs.</li>
+                        <li><i class="fas fa-chevron-right"></i> Structuration et organisation d’une base de données pour l’optimisation du suivi maintenance.</li>
+                        <li><i class="fas fa-chevron-right"></i> Définition et mise en place de KPI pour évaluer les performances du système.</li>
+                        <li><i class="fas fa-chevron-right"></i> Conception d’une interface de supervision pour le suivi de l’état de santé (health monitoring).</li>
+                    </ul>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-title-line"><span class="exp-title">Stage PFA – Modélisation machine asynchrone</span><span class="exp-date">Juil – Août 2025</span></div>
+                    <div class="exp-sub">OCP · El Jadida</div>
+                    <ul class="task-list">
+                        <li><i class="fas fa-chevron-right"></i> Modélisation d’une machine asynchrone sous MATLAB/Simulink (modèle équivalent dynamique).</li>
+                        <li><i class="fas fa-chevron-right"></i> Implémentation de deux stratégies : commande scalaire V/f et commande vectorielle FOC.</li>
+                        <li><i class="fas fa-chevron-right"></i> Analyse des performances du moteur dans différentes conditions de fonctionnement (charge, vitesse, régime transitoire).</li>
+                    </ul>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-title-line"><span class="exp-title">Stage d’observation – Maintenance corrective</span><span class="exp-date">Juillet 2024</span></div>
+                    <div class="exp-sub">Leader Food · Casablanca</div>
+                    <ul class="task-list">
+                        <li><i class="fas fa-chevron-right"></i> Initiation à la maintenance corrective des équipements industriels.</li>
+                        <li><i class="fas fa-chevron-right"></i> Participation aux interventions et diagnostic des pannes.</li>
+                        <li><i class="fas fa-chevron-right"></i> Développement de compétences pratiques en environnement industriel.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- PROJETS ACADÉMIQUES -->
+            <div class="section-main">
+                <div class="section-main-header"><i class="fas fa-microchip"></i> <span>PROJETS ACADÉMIQUES</span></div>
+                <div class="project-item"><div class="project-title">📌 Projets Expertise (2025-2026)</div><div class="project-details">Commande vectorielle de la machine asynchrone via FPGA + interface LabView.<br>Modélisation des supercondensateurs utilisés dans les véhicules électriques et hybrides (MATLAB).</div></div>
+                <div class="project-item"><div class="project-title">📌 Architecture & Technologie des Systèmes (2025)</div><div class="project-details">Étude et mise en œuvre d’une logique câblée pour la gestion des combles-lacunes dans une station de train (AutoCAD Electrical).</div></div>
+                <div class="project-item"><div class="project-title">📌 Systèmes informatiques de commande (2025)</div><div class="project-details">Contrôle d’un ascenseur avec afficheur 7 segments à l’aide d’un microcontrôleur (Proteus).</div></div>
+                <div class="project-item"><div class="project-title">📌 Modélisation et simulation multiphysique (2024-2025)</div><div class="project-details">Simulation multiphysique d’un véhicule électrique à batterie (VEB) sous ANSYS.</div></div>
+                <div class="project-item"><div class="project-title">📌 Écoconception (2024)</div><div class="project-details">Écoconception d’un stylo rétractable : analyse des impacts environnementaux et optimisation (OpenLCA).</div></div>
+            </div>
+
+            <!-- LOGICIELS & ENVIRONNEMENTS -->
+            <div class="section-main">
+                <div class="section-main-header"><i class="fas fa-laptop-code"></i> <span>LOGICIELS & ENVIRONNEMENTS</span></div>
+                <div class="software-grid">
+                    <span class="software-item">ETAP</span>
+                    <span class="software-item">Caneco BT</span>
+                    <span class="software-item">Ecodial</span>
+                    <span class="software-item">AutoCAD Electrical</span>
+                    <span class="software-item">MATLAB/Simulink</span>
+                    <span class="software-item">CATIA V5</span>
+                    <span class="software-item">ANSYS</span>
+                    <span class="software-item">SolidWorks</span>
+                    <span class="software-item">WinCC</span>
+                    <span class="software-item">MySQL</span>
+                    <span class="software-item">Proteus</span>
+                    <span class="software-item">OpenLCA</span>
+                    <span class="software-item">Word</span>
+                    <span class="software-item">Excel</span>
+                    <span class="software-item">PowerPoint</span>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+    <footer>
+        <i class="fas fa-sync-alt"></i> BALLA RANIYA · Ingénieure Génie électromécanique · +212 6 44 98 76 38 · MAJ 2026
+    </footer>
+</div>
+
+<div class="print-controls">
+    <button class="btn-pdf" id="generatePDF">
+        <i class="fas fa-file-pdf"></i> 
+        <span>🖨️ Imprimer / PDF (A4 - QR inclus - 1 page)</span>
+        <i class="fas fa-qrcode"></i>
+    </button>
+</div>
+
+<script>
+    (function() {
+        let pageUrl = window.location.href;
+        if (pageUrl.startsWith('file://')) {
+            pageUrl = "https://raniaballa-cv.ma/";
+        }
+        
+        function generateQRCodeForPrint() {
+            const qrContainer = document.getElementById('qrPrintZone');
+            if (!qrContainer) return;
+            qrContainer.innerHTML = '';
+            
+            const wrapper = document.createElement('div');
+            wrapper.style.display = 'flex';
+            wrapper.style.alignItems = 'center';
+            wrapper.style.justifyContent = 'flex-start';
+            wrapper.style.gap = '5px';
+            wrapper.style.width = '100%';
+            
+            const textDiv = document.createElement('div');
+            textDiv.className = 'qr-text';
+            textDiv.innerHTML = '<i class="fas fa-qrcode"></i> Scan CV';
+            
+            const qrDiv = document.createElement('div');
+            qrDiv.className = 'qr-box';
+            
+            wrapper.appendChild(textDiv);
+            wrapper.appendChild(qrDiv);
+            qrContainer.appendChild(wrapper);
+            
+            try {
+                if (typeof QRCode !== 'undefined') {
+                    new QRCode(qrDiv, {
+                        text: pageUrl,
+                        width: 38,
+                        height: 38,
+                        colorDark: "#1e2f3c",
+                        colorLight: "#ffffff",
+                        correctLevel: QRCode.CorrectLevel.M
+                    });
+                } else {
+                    qrDiv.innerHTML = '<div style="width:38px;height:38px;background:#eee;display:flex;align-items:center;justify-content:center;font-size:6px;">QR</div>';
+                }
+            } catch(e) {
+                qrDiv.innerHTML = '<div style="width:38px;height:38px;background:#f8d7da;display:flex;align-items:center;justify-content:center;font-size:6px;">⚠️</div>';
+            }
+        }
+        
+        generateQRCodeForPrint();
+        
+        const pdfBtn = document.getElementById('generatePDF');
+        if (pdfBtn) {
+            pdfBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                generateQRCodeForPrint();
+                window.print();
+            });
+        }
+        
+        const profileImg = document.querySelector('.photo-frame img');
+        if(profileImg && profileImg.complete && profileImg.naturalWidth === 0) {
+            profileImg.onerror = function() {
+                this.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23344e5c'/%3E%3Ctext x='50' y='70' font-size='42' text-anchor='middle' fill='%23ffb347'%3E👩%3C/text%3E%3C/svg%3E";
+            };
+        }
+    })();
+</script>
+</body>
+</html>
